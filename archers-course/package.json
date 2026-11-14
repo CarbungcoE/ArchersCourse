@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:backend": "vitest",
+    "test:backend:ci": "vitest run"
   },
   "dependencies": {
     "next": "16.4.2",
@@ -18,9 +20,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^15.21.2",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
+    "start-server-and-test": "^3.0.13",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.12"
   }
 }
