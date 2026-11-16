@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
+const repositoryName = "ArchersCourse";
+const isProd = process.env.NODE_ENV === "production";
+const basePath = isProd ? `/${repositoryName}` : "";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  trailingSlash: true,
+  basePath,
+  assetPrefix: isProd ? `${basePath}/` : undefined,
+  images: {
+    unoptimized: true,
+  },
   experimental: {
     agentFeedback: true,
   },
