@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath,
   assetPrefix: isProd ? `${basePath}/` : undefined,
+  experimental: {
+    agentUpgrade: "security",
+  },
   images: {
     unoptimized: true,
   },
