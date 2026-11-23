@@ -1,26 +1,256 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+--background: #fafaf9;
+--foreground: #18181b;
+--muted: #71717a;
+--accent: #3b5bdb;
+--border: #e4e4e7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+--color-background: var(--background);
+--color-foreground: var(--foreground);
+--color-muted: var(--muted);
+--color-accent: var(--accent);
+--color-border: var(--border);
+--font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+min-height: 100dvh;
+background: var(--background);
+color: var(--foreground);
+font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Desktop-only layout, scaled using the available width and height.
+ Layout remains in normal flow: no transforms, clipped content, or hidden scrolling. */
+.login-shell {
+  --login-unit: min(0.9px, calc((100dvw - 32px) / 1472), calc((100dvh - 32px) / 1024));
+  width: calc(1472 * var(--login-unit));
+  max-width: none;
+  padding: 0 calc(80 * var(--login-unit)) calc(50 * var(--login-unit));
+}
+
+/* Header and intro share the shell content edge. */
+.login-shell > header {
+  gap: calc(15 * var(--login-unit));
+  padding-top: calc(18 * var(--login-unit));
+  padding-inline: 0;
+  margin-inline: 0;
+}
+
+.login-shell > header > img {
+  width: calc(50 * var(--login-unit));
+  height: auto;
+}
+
+.login-shell > header > span {
+  font-size: calc(28 * var(--login-unit));
+}
+
+.login-main {
+  grid-template-columns: minmax(0, 568fr) minmax(0, 612fr);
+  gap: calc(132 * var(--login-unit));
+  margin-top: calc(101 * var(--login-unit));
+}
+
+.login-intro h1 {
+  font-size: calc(60 * var(--login-unit));
+}
+
+.login-intro > p {
+  margin-top: calc(20 * var(--login-unit));
+  font-size: calc(24 * var(--login-unit));
+}
+
+.login-illustration {
+  width: 80.63%;
+  height: auto;
+  margin-top: calc(29 * var(--login-unit));
+}
+
+.login-features {
+  gap: calc(29 * var(--login-unit));
+  margin-top: calc(43 * var(--login-unit));
+}
+
+.login-features > li {
+  min-height: calc(160 * var(--login-unit));
+  padding: calc(19 * var(--login-unit)) calc(8 * var(--login-unit)) calc(16 * var(--login-unit));
+  border-radius: calc(5 * var(--login-unit));
+}
+
+.login-features > li > span {
+  width: calc(40 * var(--login-unit));
+  height: calc(40 * var(--login-unit));
+  border-radius: calc(5 * var(--login-unit));
+}
+
+.login-features img {
+  width: auto;
+  height: calc(20 * var(--login-unit));
+}
+
+.login-features h2 {
+  margin-top: calc(8 * var(--login-unit));
+  font-size: calc(18 * var(--login-unit));
+}
+
+.login-features p {
+  margin-top: calc(4 * var(--login-unit));
+  font-size: calc(14 * var(--login-unit));
+}
+
+.sign-in-card {
+  margin-top: calc(63 * var(--login-unit));
+  padding: calc(111 * var(--login-unit)) calc(66 * var(--login-unit)) calc(108 * var(--login-unit));
+  border-radius: calc(20 * var(--login-unit));
+}
+
+.sign-in-card > img:first-child {
+  width: calc(72 * var(--login-unit));
+  height: auto;
+}
+
+.sign-in-card h2 {
+  margin-top: calc(16 * var(--login-unit));
+  font-size: calc(36 * var(--login-unit));
+}
+
+.sign-in-card > h2 + p {
+  margin-top: calc(18 * var(--login-unit));
+  font-size: calc(22 * var(--login-unit));
+}
+
+.sign-in-button {
+  min-height: calc(58 * var(--login-unit));
+  gap: calc(12 * var(--login-unit));
+  margin-top: calc(55 * var(--login-unit));
+  padding: calc(12 * var(--login-unit)) calc(16 * var(--login-unit));
+  border-radius: calc(10 * var(--login-unit));
+  font-size: calc(20 * var(--login-unit));
+}
+
+.sign-in-button img {
+  width: calc(20 * var(--login-unit));
+  height: auto;
+}
+
+.sign-in-divider {
+  margin-top: calc(56 * var(--login-unit));
+}
+
+.sign-in-note {
+  margin-top: calc(49 * var(--login-unit));
+  font-size: calc(18 * var(--login-unit));
+}
+
+.sign-in-note br {
+  display: block;
+}
+
+/* Phones use readable text and stacked sections instead of shrinking the desktop. */
+@media (max-width: 767px) {
+  .login-shell {
+    --login-unit: 1px;
+    width: 100%;
+    max-width: 40rem;
+    padding: 0 1.25rem 3rem;
+  }
+
+  .login-shell > header {
+    gap: 0.75rem;
+    padding-top: 1.125rem;
+  }
+
+  .login-shell > header > img {
+    width: 2.75rem;
+  }
+
+  .login-shell > header > span {
+    font-size: 1.5rem;
+  }
+
+  .login-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .login-intro h1 {
+    font-size: clamp(1.75rem, 8.5vw, 2.75rem);
+  }
+
+  .login-intro > p {
+    margin-top: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+
+  .login-illustration {
+    width: 85%;
+    margin-top: 1.75rem;
+  }
+
+  .login-features {
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .login-features > li {
+    min-height: 10rem;
+    padding: 1rem 0.375rem;
+  }
+
+  .login-features h2 {
+    font-size: 0.875rem;
+  }
+
+  .login-features p {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .sign-in-card {
+    margin-top: 0;
+    padding: 2.5rem 1.25rem;
+  }
+
+  .sign-in-card > img:first-child {
+    width: 3.5rem;
+  }
+
+  .sign-in-card h2 {
+    font-size: clamp(1.375rem, 5.8vw, 1.75rem);
+  }
+
+  .sign-in-card > h2 + p {
+    margin-top: 0.875rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sign-in-button {
+    min-height: 3.25rem;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 0.875rem 0.75rem;
+    font-size: 1rem;
+  }
+
+  .sign-in-divider {
+    margin-top: 2rem;
+  }
+
+  .sign-in-note {
+    margin-top: 1.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .sign-in-note br {
+    display: none;
+  }
 }
