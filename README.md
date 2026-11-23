@@ -23,7 +23,7 @@ Start the app:
 npm run dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001). In the Supabase authentication settings, add `http://localhost:3001/auth/callback` as an allowed redirect URL for local Google sign-in.
+Open [http://localhost:3000](http://localhost:3000). In the Supabase authentication settings, add `http://localhost:3000/auth/callback` as an allowed redirect URL for local Google sign-in.
 
 Do not commit `.env.local` or real Supabase credentials.
 
