@@ -27,6 +27,14 @@ Open [http://localhost:3000](http://localhost:3000). In the Supabase authenticat
 
 Do not commit `.env.local` or real Supabase credentials.
 
+## GitHub Pages
+
+The Pages workflow uploads a static Next.js export from `archers-course/out`.
+To enable Google sign-in on Pages, set `NEXT_PUBLIC_SUPABASE_URL` and
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` as GitHub Actions repository variables. In
+Supabase Authentication, add the deployed callback URL
+`https://carbungcoe.github.io/ArchersCourse/auth/callback/` to the redirect allowlist.
+
 Figma design draft:
 
 Typography, Color Palette, & Icons

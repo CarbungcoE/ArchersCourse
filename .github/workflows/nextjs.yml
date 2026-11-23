@@ -52,9 +52,8 @@ jobs:
           cache-dependency-path: archers-course/package-lock.json
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
 
       - name: Restore cache
         uses: actions/cache@v4
@@ -69,9 +68,21 @@ jobs:
         working-directory: ./archers-course
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js
+      - name: Export static site
         working-directory: ./archers-course
+        env:
+          NEXT_PUBLIC_GITHUB_PAGES: "true"
+          NEXT_PUBLIC_GITHUB_PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
+      - name: Verify Pages output
+        working-directory: ./archers-course
+        run: |
+          test -s out/index.html
+          test -s out/auth/callback/index.html
+          test -s out/home/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
