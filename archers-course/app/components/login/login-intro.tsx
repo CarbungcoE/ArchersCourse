@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { basePath } from "@/utils/deployment";
 
 const features = [
   { title: "Read Reviews", description: "Learn from others’ experiences.", icon: "read-reviews.svg", width: 20 },
@@ -17,7 +18,7 @@ export default function LoginIntro() {
         Read and share student experiences to prepare for your courses and make informed academic decisions.
       </p>
       <Image
-        src="/login/course-planning-illustration.svg"
+        src={`${basePath}/login/course-planning-illustration.svg`}
         width={800.385}
         height={475.927}
         alt="A student planning courses beside a board of notes."
@@ -28,7 +29,7 @@ export default function LoginIntro() {
         {features.map((feature) => (
           <li key={feature.title} className="flex min-h-40 flex-col items-center rounded-[0.3125rem] border border-border bg-white px-2 pt-[1.1875rem] pb-4 text-center">
             <span className="flex size-10 items-center justify-center rounded-[0.3125rem] bg-[#d9d9d9]" aria-hidden="true">
-              <Image src={`/login/${feature.icon}`} width={feature.width} height={20} alt="" />
+              <Image src={`${basePath}/login/${feature.icon}`} width={feature.width} height={20} alt="" />
             </span>
             <h2 className="mt-2 text-sm leading-tight font-bold">{feature.title}</h2>
             <p className="mt-1 text-xs leading-[1.21] text-muted">{feature.description}</p>

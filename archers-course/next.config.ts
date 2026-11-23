@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
-
-const repositoryName = "ArchersCourse";
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? `/${repositoryName}` : "";
+import { basePath, isPagesBuild } from "./utils/deployment";
 
 const nextConfig: NextConfig = {
+  output: isPagesBuild ? "export" : undefined,
+  // Each build discovers the OAuth callback and proxy files it can run.
+  pageExtensions: ["tsx", "ts", "jsx", "js", isPagesBuild ? "pages.tsx" : "server.ts"],
   trailingSlash: true,
   basePath,
-  assetPrefix: isProd ? `${basePath}/` : undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   experimental: {
     agentUpgrade: "security",
   },
