@@ -17,10 +17,10 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
 
-Start the app on port 3001:
+Start the app:
 
 ```bash
-npm run dev -- --port 3001
+npm run dev
 ```
 
 Open [http://localhost:3001](http://localhost:3001). In the Supabase authentication settings, add `http://localhost:3001/auth/callback` as an allowed redirect URL for local Google sign-in.
