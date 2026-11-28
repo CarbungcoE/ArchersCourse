@@ -333,6 +333,8 @@
   .brand { gap: 0.75rem; font-size: var(--text-h4); }
   .brand img { inline-size: 2.75rem; block-size: 2.75rem; }
   .search { --search-offset: 3rem; }
+  .action { gap: 0.375rem; padding-inline: 0.5rem; font-size: 0.875rem; }
+  .action svg { inline-size: 1.125rem; block-size: 1.125rem; }
   .feed { padding-inline: 1.5rem; }
   .review { padding-inline: 1.25rem; }
 }
