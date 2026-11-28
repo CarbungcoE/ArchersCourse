@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { Review } from "@/data/mock-reviews";
 import { basePath } from "@/utils/deployment";
 import { createClient } from "@/utils/supabase/client";
 import HomeFeed from "./home-feed";
-import { getHomeRole, type HomeRole } from "./home-role";
+import { getHomeRole, type HomePage, type HomeRole } from "./home-role";
 
-export default function HomeAccount({ reviews, allowAnonymousPreview }: {
+export default function HomeAccount({ reviews, allowAnonymousPreview, activePage = "home", children }: {
   reviews: readonly Review[];
   allowAnonymousPreview: boolean;
+  activePage?: HomePage;
+  children?: ReactNode;
 }) {
   const [role, setRole] = useState<HomeRole>("user");
 
@@ -57,5 +59,5 @@ export default function HomeAccount({ reviews, allowAnonymousPreview }: {
     };
   }, [allowAnonymousPreview]);
 
-  return <HomeFeed reviews={reviews} role={role} />;
+  return <HomeFeed reviews={reviews} role={role} activePage={activePage}>{children}</HomeFeed>;
 }

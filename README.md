@@ -46,7 +46,7 @@ The shared palette and Inter type scale live in `archers-course/app/globals.css`
 
 The base colors are `#18181B` for primary text, `#52525B` for secondary surfaces' text, `#71717A` for muted text, `#FAFAF9` for the page, `#FFFFFF` for cards, `#E4E4E7` for borders, and `#F4F4F5` for vote pills. The mockups also supply `#F7F7F6` for ghost controls, `#D6D6D6` for dividers, `#D9D9D9` for avatars, and `#B40000` for the difficulty icon.
 
-`archers-course/data/mock-reviews.ts` exports the review type and six sample reviews. The `/home` route passes that collection to the feed, so a future data source can supply the same shape. **New Course Review**, **Courses**, **Add a Course**, and **Admin Management** are placeholders.
+`archers-course/data/mock-reviews.ts` exports the review type and six sample reviews. The `/home` route passes that collection to the feed, so a future data source can supply the same shape. `/courses` shows the hardcoded course list, `/courses/new-review` contains the review form, and `/courses/add-course` contains the course request form. Form confirmations are demo-only and do not save or send data. **Admin Management** remains a placeholder.
 
 ## GitHub Pages
 
